@@ -15,7 +15,8 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Service
-public class JwtService implements CommandLineRunner {
+public class JwtService // implements CommandLineRunner
+{
 
     @Value("${jwt.expiry}")
     private int expiry;
@@ -88,13 +89,13 @@ public class JwtService implements CommandLineRunner {
         return (Object) claim.get(payloadKey);
     }
 
-    @Override
-    public void run(String... args) throws Exception {
-        Map<String, Object> mp = new HashMap<>();
-        mp.put("email", "assasaa@b.com");
-        mp.put("phoneNumber", "0212542025");
-        String result = createToken(mp, "Ashu");
-        System.out.println("Generated token is: " + result);
-        System.out.println(extractPayload(result, "email").toString());
-    }
+//    @Override
+//    public void run(String... args) throws Exception {
+//        Map<String, Object> mp = new HashMap<>();
+//        mp.put("email", "assasaa@b.com");
+//        mp.put("phoneNumber", "0212542025");
+//        String result = createToken(mp, "Ashu");
+//        System.out.println("Generated token is: " + result);
+//        System.out.println(extractPayload(result, "email").toString());
+//    }
 }

@@ -6,6 +6,8 @@ import com.example.UberProjects_AuthService.dtos.PassengerDto;
 import com.example.UberProjects_AuthService.dtos.PassengerSignupRequestDto;
 import com.example.UberProjects_AuthService.services.AuthService;
 import com.example.UberProjects_AuthService.services.JwtService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
@@ -54,7 +56,7 @@ public class AuthController {
                     .httpOnly(true)
                     .secure(false)
                     .path("/")
-                    .maxAge(cookieExpiry)
+                    .maxAge(7*24*3600)
                     .build();
 
             response.setHeader(HttpHeaders.SET_COOKIE, cookie.toString());
@@ -62,6 +64,15 @@ public class AuthController {
         } else {
             throw new UsernameNotFoundException("User not found");
         }
+    }
+
+    @GetMapping("/validate")
+    public ResponseEntity<?> validate(HttpServletRequest request, HttpServletResponse response) {
+        System.out.println("Inside validate controller");
+        for(Cookie cookie: request.getCookies()) {
+            System.out.println(cookie.getName() + " " + cookie.getValue());
+        }
+        return new ResponseEntity<>("Success", HttpStatus.OK);
     }
 
 }

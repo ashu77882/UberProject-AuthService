@@ -15,5 +15,5 @@ public class PassengerSignupRequestDto {
 
     private String phoneNumber;
 
-    private     String name;
+    private String name;
 }

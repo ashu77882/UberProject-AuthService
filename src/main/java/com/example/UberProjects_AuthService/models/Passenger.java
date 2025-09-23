@@ -1,5 +1,6 @@
 package com.example.UberProjects_AuthService.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
@@ -14,6 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler" , "bookings"})
 public class Passenger extends BaseModel{
 
     @Column(nullable = false)
@@ -29,7 +31,7 @@ public class Passenger extends BaseModel{
     private String password;
 
     @OneToMany(mappedBy = "passenger")
-    private List<Booking> bookings;
+    private List<Booking> bookings ;
 
 
 }

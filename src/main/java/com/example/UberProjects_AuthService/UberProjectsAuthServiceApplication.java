@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
 @EnableJpaAuditing
-public class  UberProjectsAuthServiceApplication {
+public class UberProjectsAuthServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UberProjectsAuthServiceApplication.class, args);
